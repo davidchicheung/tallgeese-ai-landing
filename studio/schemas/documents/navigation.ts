@@ -8,10 +8,10 @@ export default defineType({
   icon: Menu,
   fields: [
     defineField({
-      name: "links",
-      title: "Links",
+      name: "items",
+      title: "Navigation Items",
       type: "array",
-      of: [{ type: "link" }],
+      of: [{ type: "nav-item" }],
     }),
   ],
   preview: {

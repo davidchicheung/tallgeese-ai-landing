@@ -1,9 +1,25 @@
 import { groq } from "next-sanity";
+import { linkQuery } from "./shared/link";
+import { navLinkQuery } from "./shared/nav-link";
 
 export const NAVIGATION_QUERY = groq`
   *[_type == "navigation"]{
     _type,
     _key,
-    links
+    items[]{
+      _key,
+      itemType,
+      itemType == "link" => {
+        link{
+          ${linkQuery}
+        }
+      },
+      itemType == "dropdown" => {
+        title,
+        children[]{
+          ${navLinkQuery}
+        }
+      }
+    }
   }
 `;
