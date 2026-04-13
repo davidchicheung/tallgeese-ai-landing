@@ -25,7 +25,7 @@ export default function DesktopNav({
   const items = navigation[0]?.items;
 
   return (
-    <NavigationMenu className="hidden xl:flex">
+    <NavigationMenu className="justify-self-center">
       <NavigationMenuList className="gap-1">
         {items?.map((navItem: NavItem) => {
           if (

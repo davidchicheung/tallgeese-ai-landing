@@ -1,6 +1,7 @@
 import Logo from "@/components/logo";
 import Link from "next/link";
 import PortableTextRenderer from "@/components/portable-text-renderer";
+import { ModeToggle } from "@/components/menu-toggle";
 import { fetchSanitySettings, fetchSanityNavigation } from "@/sanity/lib/fetch";
 
 export default async function Footer() {
@@ -63,7 +64,7 @@ export default async function Footer() {
             </div>
           )}
 
-          <div className="mt-10 flex flex-row gap-6 text-xs border-t pt-8">
+          <div className="mt-10 flex items-center justify-between text-xs border-t pt-8">
             <div className="flex items-center gap-2 text-foreground/60">
               <span>&copy; {new Date().getFullYear()}</span>
               {settings?.copyright && (
@@ -72,6 +73,7 @@ export default async function Footer() {
                 </span>
               )}
             </div>
+            <ModeToggle />
           </div>
         </div>
       </div>
