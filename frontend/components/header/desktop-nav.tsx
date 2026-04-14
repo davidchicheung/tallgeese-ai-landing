@@ -37,7 +37,7 @@ export default function DesktopNav({
               "title" in navItem ? (navItem.title as string) : "";
             return (
               <NavigationMenuItem key={navItem._key}>
-                <NavigationMenuTrigger className="bg-transparent text-foreground/60 hover:text-foreground/80 hover:bg-transparent data-[state=open]:bg-transparent">
+                <NavigationMenuTrigger className="bg-transparent text-foreground/60 hover:text-foreground/80 hover:bg-accent rounded-md data-[state=open]:bg-accent/50">
                   {dropdownTitle}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -91,7 +91,7 @@ export default function DesktopNav({
                       variant: link.buttonVariant || "default",
                     }),
                     link.buttonVariant === "ghost" &&
-                      "transition-colors hover:text-foreground/80 text-foreground/60 text-sm p-0 h-auto hover:bg-transparent",
+                      "transition-colors hover:text-foreground/80 text-foreground/60 text-sm px-4 py-2 h-auto hover:bg-accent rounded-md",
                   )}
                 >
                   {link.title}
