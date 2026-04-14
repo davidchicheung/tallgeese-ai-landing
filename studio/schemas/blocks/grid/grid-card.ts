@@ -7,6 +7,33 @@ export default defineType({
   icon: LayoutGrid,
   fields: [
     defineField({
+      name: "icon",
+      title: "Icon",
+      type: "iconPicker",
+      options: {
+        storeSvg: true,
+      },
+    }),
+    defineField({
+      name: "iconColor",
+      title: "Icon Color",
+      type: "string",
+      options: {
+        list: [
+          { title: "Blue", value: "blue" },
+          { title: "Indigo", value: "indigo" },
+          { title: "Purple", value: "purple" },
+          { title: "Green", value: "green" },
+          { title: "Red", value: "red" },
+          { title: "Orange", value: "orange" },
+          { title: "Teal", value: "teal" },
+          { title: "Pink", value: "pink" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "blue",
+    }),
+    defineField({
       name: "title",
       type: "string",
     }),
@@ -26,8 +53,15 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "hasLink",
+      title: "Include Link",
+      type: "boolean",
+      initialValue: true,
+    }),
+    defineField({
       name: "link",
       type: "link",
+      hidden: ({ parent }) => !parent?.hasLink,
     }),
   ],
   preview: {

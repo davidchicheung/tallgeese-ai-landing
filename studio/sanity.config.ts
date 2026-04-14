@@ -8,6 +8,7 @@ import { resolve } from "./presentation/resolve";
 import { structure } from "./structure";
 import { defaultDocumentNode } from "./defaultDocumentNode";
 import { codeInput } from "@sanity/code-input";
+import { iconPicker } from "sanity-plugin-icon-picker";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set([
@@ -61,6 +62,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     codeInput(),
+    iconPicker(),
     media(),
   ],
 });
