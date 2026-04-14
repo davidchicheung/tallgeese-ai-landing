@@ -53,6 +53,7 @@ export default defineType({
         { type: "faqs" },
         { type: "form-newsletter" },
         { type: "all-posts" },
+        { type: "feature-cards" },
       ],
       options: {
         insertMenu: {
@@ -111,6 +112,11 @@ export default defineType({
               name: "all-posts",
               title: "All Posts",
               of: ["all-posts"],
+            },
+            {
+              name: "feature-cards",
+              title: "Feature Cards",
+              of: ["feature-cards"],
             },
           ],
           views: [

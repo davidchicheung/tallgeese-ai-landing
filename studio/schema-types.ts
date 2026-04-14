@@ -40,6 +40,8 @@ import logoCloud1 from "./schemas/blocks/logo-cloud/logo-cloud-1";
 import faqs from "./schemas/blocks/faqs";
 import newsletter from "./schemas/blocks/forms/newsletter";
 import allPosts from "./schemas/blocks/all-posts";
+import featureCardItem from "./schemas/blocks/feature-cards/feature-card-item";
+import featureCards from "./schemas/blocks/feature-cards/feature-cards";
 
 export const schemaTypes = [
   // documents
@@ -83,4 +85,6 @@ export const schemaTypes = [
   faqs,
   newsletter,
   allPosts,
+  featureCardItem,
+  featureCards,
 ];
