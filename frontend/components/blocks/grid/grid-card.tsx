@@ -79,7 +79,7 @@ export default function GridCard({
               <h3 className="font-bold text-2xl">{title}</h3>
             </div>
           )}
-          {excerpt && <p>{excerpt}</p>}
+          {excerpt && <p className="text-muted-foreground">{excerpt}</p>}
         </div>
       </div>
       {hasLink && (

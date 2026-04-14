@@ -10,7 +10,7 @@ export default async function Header() {
   const navigation = await fetchSanityNavigation();
   return (
     <header className="sticky top-0 w-full border-border/40 bg-background/95 z-50">
-      <div className="container hidden xl:grid grid-cols-[auto_1fr_auto] items-center h-14">
+      <div className="container hidden lg:grid grid-cols-[auto_1fr_auto] items-center h-14">
         <Link href="/" aria-label="Home page">
           <Logo settings={settings} />
         </Link>
@@ -19,7 +19,7 @@ export default async function Header() {
           Contact Us
         </Link>
       </div>
-      <div className="container flex items-center justify-between h-14 xl:hidden">
+      <div className="container flex items-center justify-between h-14 lg:hidden">
         <Link href="/" aria-label="Home page">
           <Logo settings={settings} />
         </Link>

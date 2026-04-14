@@ -41,7 +41,7 @@ export default function SectionHeader({
           )}
           <h2 className="text-3xl md:text-5xl mb-4">{title}</h2>
         </div>
-        <p>{description}</p>
+        <p className="text-muted-foreground">{description}</p>
       </div>
     </SectionContainer>
   );

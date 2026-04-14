@@ -132,6 +132,15 @@ export default function MobileNav({
                 );
               })}
             </div>
+            <div className="pt-6 text-center">
+              <Link
+                onClick={() => setOpen(false)}
+                href="/contact"
+                className={cn(buttonVariants({ variant: "default" }), "w-full")}
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </SheetContent>

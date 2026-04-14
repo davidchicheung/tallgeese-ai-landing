@@ -24,7 +24,7 @@ export default function LogoCloud1({
       className="overflow-hidden"
     >
       {title && (
-        <h2 className="text-lg font-medium tracking-tighter text-center mb-4 animate-fade-up [animation-delay:100ms] opacity-0">
+        <h2 className="text-sm font-normal tracking-wide uppercase text-muted-foreground text-left mb-4 animate-fade-up [animation-delay:100ms] opacity-0">
           {title}
         </h2>
       )}
