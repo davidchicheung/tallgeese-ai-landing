@@ -8,6 +8,8 @@ import {
 } from "@/sanity/lib/fetch";
 import { generatePageMetadata } from "@/sanity/lib/metadata";
 
+export const revalidate = 30;
+
 type BreadcrumbLink = {
   label: string;
   href: string;

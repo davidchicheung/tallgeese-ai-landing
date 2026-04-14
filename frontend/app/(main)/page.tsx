@@ -3,6 +3,8 @@ import { fetchSanityPageBySlug } from "@/sanity/lib/fetch";
 import { generatePageMetadata } from "@/sanity/lib/metadata";
 import MissingSanityPage from "@/components/ui/missing-sanity-page";
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const page = await fetchSanityPageBySlug({ slug: "index" });
 
