@@ -199,7 +199,7 @@ function CylinderWithGraph() {
           transparent
           opacity={0.3}
           depthWrite={false}
-          color={isDark ? "#a8c4e6" : "#d4e4f7"}
+          color={isDark ? "#c8ddf0" : "#e8f0fa"}
           roughness={0.15}
           metalness={0.05}
           side={THREE.DoubleSide}
