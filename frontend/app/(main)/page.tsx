@@ -1,4 +1,5 @@
 import Blocks from "@/components/blocks";
+import HeroSceneLoader from "@/components/3d/hero-scene-loader";
 import { fetchSanityPageBySlug } from "@/sanity/lib/fetch";
 import { generatePageMetadata } from "@/sanity/lib/metadata";
 import MissingSanityPage from "@/components/ui/missing-sanity-page";
@@ -18,5 +19,10 @@ export default async function IndexPage() {
     return MissingSanityPage({ document: "page", slug: "index" });
   }
 
-  return <Blocks blocks={page?.blocks ?? []} />;
+  return (
+    <>
+      <HeroSceneLoader />
+      <Blocks blocks={page?.blocks ?? []} />
+    </>
+  );
 }
