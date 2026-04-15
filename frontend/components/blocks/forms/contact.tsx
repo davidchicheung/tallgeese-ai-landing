@@ -204,6 +204,7 @@ export default function FormContact({
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
+                className="cursor-pointer"
               >
                 {isSubmitting && (
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
