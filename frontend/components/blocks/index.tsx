@@ -11,6 +11,7 @@ import Cta1 from "@/components/blocks/cta/cta-1";
 import LogoCloud1 from "@/components/blocks/logo-cloud/logo-cloud-1";
 import FAQs from "@/components/blocks/faqs";
 import FormNewsletter from "@/components/blocks/forms/newsletter";
+import FormContact from "@/components/blocks/forms/contact";
 import AllPosts from "@/components/blocks/all-posts";
 import FeatureCards from "@/components/blocks/feature-cards";
 import Legal from "@/components/blocks/legal";
@@ -32,6 +33,7 @@ const componentMap: {
   "logo-cloud-1": LogoCloud1,
   faqs: FAQs,
   "form-newsletter": FormNewsletter,
+  "form-contact": FormContact,
   "all-posts": AllPosts,
   "feature-cards": FeatureCards,
   legal: Legal,
