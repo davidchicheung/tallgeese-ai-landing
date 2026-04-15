@@ -6,7 +6,6 @@ import {
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/sanity/lib/metadata";
 
-export const revalidate = 30;
 
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();
