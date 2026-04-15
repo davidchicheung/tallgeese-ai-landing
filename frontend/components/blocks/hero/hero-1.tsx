@@ -22,17 +22,19 @@ export default function Hero1({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div className="flex flex-col justify-center">
           {tagLine && (
-            <h1 className="leading-[0] font-sans animate-fade-up [animation-delay:100ms] opacity-0">
-              <span className="text-base font-semibold">{tagLine}</span>
-            </h1>
+            <div className="animate-fade-up [animation-delay:100ms] opacity-0">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 border border-indigo-300 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-wider uppercase">
+                {tagLine}
+              </span>
+            </div>
           )}
           {title && (
-            <h2 className="mt-6 font-bold leading-[1.1] text-4xl md:text-5xl lg:text-6xl animate-fade-up [animation-delay:200ms] opacity-0">
+            <h2 className="mt-6 font-bold leading-[1.1] text-3xl md:text-4xl lg:text-5xl animate-fade-up [animation-delay:200ms] opacity-0">
               {title}
             </h2>
           )}
           {body && (
-            <div className="text-lg mt-6 animate-fade-up [animation-delay:300ms] opacity-0">
+            <div className="text-lg mt-6 text-muted-foreground animate-fade-up [animation-delay:300ms] opacity-0 [&_strong]:text-foreground [&_h1]:text-foreground [&_h2]:text-foreground [&_h3]:text-foreground [&_h4]:text-foreground">
               <PortableTextRenderer value={body} />
             </div>
           )}
