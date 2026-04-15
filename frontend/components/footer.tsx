@@ -33,6 +33,15 @@ export default async function Footer() {
                 const children =
                   "children" in navItem ? navItem.children : null;
 
+                const legalLinks =
+                  title === "Resources"
+                    ? [
+                        { title: "Privacy Policy", href: "/privacy" },
+                        { title: "Terms of Use", href: "/terms" },
+                        { title: "License Agreement", href: "/license" },
+                      ]
+                    : [];
+
                 return (
                   <div key={navItem._key}>
                     <h3 className="text-sm font-semibold text-foreground mb-4">
@@ -54,6 +63,16 @@ export default async function Footer() {
                             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                           >
                             {child.title}
+                          </Link>
+                        </li>
+                      ))}
+                      {legalLinks.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {link.title}
                           </Link>
                         </li>
                       ))}

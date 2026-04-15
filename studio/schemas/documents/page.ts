@@ -54,6 +54,7 @@ export default defineType({
         { type: "form-newsletter" },
         { type: "all-posts" },
         { type: "feature-cards" },
+        { type: "legal" },
       ],
       options: {
         insertMenu: {
@@ -117,6 +118,11 @@ export default defineType({
               name: "feature-cards",
               title: "Feature Cards",
               of: ["feature-cards"],
+            },
+            {
+              name: "legal",
+              title: "Legal",
+              of: ["legal"],
             },
           ],
           views: [

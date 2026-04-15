@@ -42,6 +42,7 @@ import newsletter from "./schemas/blocks/forms/newsletter";
 import allPosts from "./schemas/blocks/all-posts";
 import featureCardItem from "./schemas/blocks/feature-cards/feature-card-item";
 import featureCards from "./schemas/blocks/feature-cards/feature-cards";
+import legal from "./schemas/blocks/legal";
 
 export const schemaTypes = [
   // documents
@@ -87,4 +88,5 @@ export const schemaTypes = [
   allPosts,
   featureCardItem,
   featureCards,
+  legal,
 ];
