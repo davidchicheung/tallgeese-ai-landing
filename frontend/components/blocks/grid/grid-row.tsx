@@ -22,11 +22,22 @@ const componentMap: {
 export default function GridRow({
   padding,
   colorVariant,
+  title,
   gridColumns,
   columns,
 }: GridRow) {
   return (
     <SectionContainer color={colorVariant} padding={padding}>
+      {title && (
+        <p
+          className={cn(
+            "text-muted-foreground mb-5",
+            colorVariant === "primary" ? "text-background" : undefined,
+          )}
+        >
+          {title}
+        </p>
+      )}
       {columns && columns?.length > 0 && (
         <div className={cn(`grid grid-cols-1 gap-6`, `lg:${gridColumns}`)}>
           {columns.map((column) => {

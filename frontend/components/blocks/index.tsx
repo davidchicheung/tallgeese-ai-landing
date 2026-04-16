@@ -3,6 +3,7 @@ import Hero1 from "@/components/blocks/hero/hero-1";
 import Hero2 from "@/components/blocks/hero/hero-2";
 import SectionHeader from "@/components/blocks/section-header";
 import CompanyHero from "@/components/blocks/company-hero";
+import CompanyInfo from "@/components/blocks/company-info";
 import SplitRow from "@/components/blocks/split/split-row";
 import GridRow from "@/components/blocks/grid/grid-row";
 import Carousel1 from "@/components/blocks/carousel/carousel-1";
@@ -26,6 +27,7 @@ const componentMap: {
   "hero-2": Hero2,
   "section-header": SectionHeader,
   "company-hero": CompanyHero,
+  "company-info": CompanyInfo,
   "split-row": SplitRow,
   "grid-row": GridRow,
   "carousel-1": Carousel1,

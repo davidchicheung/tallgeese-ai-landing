@@ -56,6 +56,7 @@ export default defineType({
         { type: "hero-2" },
         { type: "section-header" },
         { type: "company-hero" },
+        { type: "company-info" },
         { type: "split-row" },
         { type: "grid-row" },
         { type: "carousel-1" },
@@ -76,7 +77,12 @@ export default defineType({
             {
               name: "hero",
               title: "Hero",
-              of: ["hero-1", "hero-2", "company-hero"],
+              of: ["hero-1", "hero-2"],
+            },
+            {
+              name: "company",
+              title: "Company",
+              of: ["company-hero", "company-info"],
             },
             {
               name: "logo-cloud",

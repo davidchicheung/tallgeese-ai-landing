@@ -19,6 +19,12 @@ export default defineType({
       description: "Select a background color variant",
     }),
     defineField({
+      name: "title",
+      type: "string",
+      title: "Title",
+      description: "Optional heading displayed above the grid",
+    }),
+    defineField({
       name: "gridColumns",
       type: "string",
       title: "Grid Columns",
@@ -52,13 +58,14 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "columns.0.title",
+      rowTitle: "title",
+      firstColumnTitle: "columns.0.title",
       postTitle: "columns.0.post.title",
     },
-    prepare({ title, postTitle }) {
+    prepare({ rowTitle, firstColumnTitle, postTitle }) {
       return {
         title: "Grid Row",
-        subtitle: title || postTitle,
+        subtitle: rowTitle || firstColumnTitle || postTitle,
       };
     },
   },
