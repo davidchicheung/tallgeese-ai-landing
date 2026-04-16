@@ -9,6 +9,7 @@ import { splitRowQuery } from "./split/split-row";
 import { gridRowQuery } from "./grid/grid-row";
 import { carousel1Query } from "./carousel/carousel-1";
 import { carousel2Query } from "./carousel/carousel-2";
+import { pageCarouselQuery } from "./page-carousel";
 import { timelineQuery } from "./timeline";
 import { cta1Query } from "./cta/cta-1";
 import { logoCloud1Query } from "./logo-cloud/logo-cloud-1";
@@ -33,6 +34,7 @@ export const PAGE_QUERY = groq`
       ${gridRowQuery},
       ${carousel1Query},
       ${carousel2Query},
+      ${pageCarouselQuery},
       ${timelineQuery},
       ${cta1Query},
       ${logoCloud1Query},

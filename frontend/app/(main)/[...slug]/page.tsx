@@ -47,5 +47,5 @@ export default async function Page(props: {
   const page = await fetchSanityPageBySlug(parsed);
   if (!page) notFound();
 
-  return <Blocks blocks={page?.blocks ?? []} />;
+  return <Blocks blocks={page?.blocks ?? []} currentSlug={parsed.slug} />;
 }
