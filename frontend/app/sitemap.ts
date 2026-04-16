@@ -10,6 +10,7 @@ const urlQuery = `
     _type == "post-index" => $baseUrl + "/blog",
     _type == "post" => $baseUrl + "/blog/" + slug.current,
     _type == "contact" => $baseUrl + "/contact",
+    _type == "page" && defined(parent) => $baseUrl + "/" + parent + "/" + slug.current,
     $baseUrl + "/" + slug.current
   )
 `;

@@ -25,6 +25,18 @@ export default defineType({
   fields: [
     defineField({ name: "title", type: "string", group: "content" }),
     defineField({
+      name: "parent",
+      title: "Parent",
+      type: "string",
+      group: "settings",
+      description:
+        "Optional URL prefix. Leave empty for top-level pages (e.g. /about). Set to group under a category (e.g. 'customers' renders at /customers/slug).",
+      options: {
+        list: [{ title: "Customers", value: "customers" }],
+        layout: "radio",
+      },
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -139,4 +151,18 @@ export default defineType({
     meta,
     orderRankField({ type: "page" }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      parent: "parent",
+      slug: "slug.current",
+    },
+    prepare({ title, parent, slug }) {
+      const path = parent ? `/${parent}/${slug ?? ""}` : `/${slug ?? ""}`;
+      return {
+        title: title ?? "(untitled)",
+        subtitle: path,
+      };
+    },
+  },
 });

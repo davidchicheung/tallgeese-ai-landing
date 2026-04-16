@@ -19,12 +19,14 @@ import {
 
 export const fetchSanityPageBySlug = async ({
   slug,
+  parent = "",
 }: {
   slug: string;
+  parent?: string;
 }): Promise<PAGE_QUERY_RESULT> => {
   const { data } = await sanityFetch({
     query: PAGE_QUERY,
-    params: { slug },
+    params: { slug, parent },
   });
 
   return data;
