@@ -3,6 +3,7 @@ import { metaQuery } from "./shared/meta";
 import { hero1Query } from "./hero/hero-1";
 import { hero2Query } from "./hero/hero-2";
 import { sectionHeaderQuery } from "./section-header";
+import { companyHeroQuery } from "./company-hero";
 import { splitRowQuery } from "./split/split-row";
 import { gridRowQuery } from "./grid/grid-row";
 import { carousel1Query } from "./carousel/carousel-1";
@@ -25,6 +26,7 @@ export const PAGE_QUERY = groq`
       ${hero1Query},
       ${hero2Query},
       ${sectionHeaderQuery},
+      ${companyHeroQuery},
       ${splitRowQuery},
       ${gridRowQuery},
       ${carousel1Query},

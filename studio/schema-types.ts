@@ -20,6 +20,7 @@ import navLink from "./schemas/blocks/shared/nav-link";
 import hero1 from "./schemas/blocks/hero/hero-1";
 import hero2 from "./schemas/blocks/hero/hero-2";
 import sectionHeader from "./schemas/blocks/section-header";
+import companyHero from "./schemas/blocks/company-hero";
 import splitRow from "./schemas/blocks/split/split-row";
 import splitContent from "./schemas/blocks/split/split-content";
 import splitCardsList from "./schemas/blocks/split/split-cards-list";
@@ -67,6 +68,7 @@ export const schemaTypes = [
   hero1,
   hero2,
   sectionHeader,
+  companyHero,
   splitRow,
   splitContent,
   splitCardsList,
