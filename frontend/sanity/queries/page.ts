@@ -19,6 +19,7 @@ import { formContactQuery } from "./forms/contact";
 import { allPostsQuery } from "./all-posts";
 import { featureCardsQuery } from "./feature-cards";
 import { legalQuery } from "./legal";
+import { imageBlockQuery } from "./image-block";
 
 export const PAGE_QUERY = groq`
   *[_type == "page" && slug.current == $slug && coalesce(parent, "") == $parent][0]{
@@ -44,6 +45,7 @@ export const PAGE_QUERY = groq`
       ${allPostsQuery},
       ${featureCardsQuery},
       ${legalQuery},
+      ${imageBlockQuery},
     },
     ${metaQuery},
   }

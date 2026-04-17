@@ -19,6 +19,12 @@ const componentMap: {
   "grid-post": GridPost,
 };
 
+const GRID_COLS_CLASSES: Record<string, string> = {
+  "grid-cols-2": "md:grid-cols-2 lg:grid-cols-2",
+  "grid-cols-3": "md:grid-cols-2 lg:grid-cols-3",
+  "grid-cols-4": "md:grid-cols-2 lg:grid-cols-4",
+};
+
 export default function GridRow({
   padding,
   colorVariant,
@@ -39,7 +45,12 @@ export default function GridRow({
         </p>
       )}
       {columns && columns?.length > 0 && (
-        <div className={cn(`grid grid-cols-1 gap-6`, `lg:${gridColumns}`)}>
+        <div
+          className={cn(
+            "grid grid-cols-1 gap-6",
+            gridColumns ? GRID_COLS_CLASSES[gridColumns] : "md:grid-cols-2 lg:grid-cols-4",
+          )}
+        >
           {columns.map((column) => {
             const Component = componentMap[column._type];
             if (!Component) {

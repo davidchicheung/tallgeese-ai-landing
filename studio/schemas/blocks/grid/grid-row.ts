@@ -32,7 +32,7 @@ export default defineType({
         list: COLS_VARIANTS.map(({ title, value }) => ({ title, value })),
         layout: "radio",
       },
-      initialValue: "grid-cols-3",
+      initialValue: "grid-cols-4",
     }),
     // add only the blocks you need
     defineField({

@@ -1,7 +1,11 @@
 import { defineField, defineType } from "sanity";
 import { GalleryHorizontal } from "lucide-react";
 
-const PARENT_OPTIONS = [{ title: "Customers", value: "customers" }];
+const PARENT_OPTIONS = [
+  { title: "Customers", value: "customers" },
+  { title: "Solutions", value: "solutions" },
+  { title: "Industries", value: "industries" },
+];
 
 const SIZE_OPTIONS = [
   { title: "One", value: "one" },

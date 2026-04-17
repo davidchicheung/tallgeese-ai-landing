@@ -18,6 +18,7 @@ import FormContact from "@/components/blocks/forms/contact";
 import AllPosts from "@/components/blocks/all-posts";
 import FeatureCards from "@/components/blocks/feature-cards";
 import Legal from "@/components/blocks/legal";
+import ImageBlock from "@/components/blocks/image-block";
 
 type Block = NonNullable<NonNullable<PAGE_QUERY_RESULT>["blocks"]>[number];
 
@@ -43,6 +44,7 @@ const componentMap: {
   "all-posts": AllPosts,
   "feature-cards": FeatureCards,
   legal: Legal,
+  "image-block": ImageBlock,
 };
 
 export default function Blocks({

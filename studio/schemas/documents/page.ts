@@ -32,7 +32,11 @@ export default defineType({
       description:
         "Optional URL prefix. Leave empty for top-level pages (e.g. /about). Set to group under a category (e.g. 'customers' renders at /customers/slug).",
       options: {
-        list: [{ title: "Customers", value: "customers" }],
+        list: [
+          { title: "Customers", value: "customers" },
+          { title: "Solutions", value: "solutions" },
+          { title: "Industries", value: "industries" },
+        ],
         layout: "radio",
       },
     }),
@@ -71,6 +75,7 @@ export default defineType({
         { type: "all-posts" },
         { type: "feature-cards" },
         { type: "legal" },
+        { type: "image-block" },
       ],
       options: {
         insertMenu: {
@@ -144,6 +149,11 @@ export default defineType({
               name: "legal",
               title: "Legal",
               of: ["legal"],
+            },
+            {
+              name: "image",
+              title: "Image",
+              of: ["image-block"],
             },
           ],
           views: [

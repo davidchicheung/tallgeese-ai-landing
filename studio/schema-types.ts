@@ -47,6 +47,7 @@ import allPosts from "./schemas/blocks/all-posts";
 import featureCardItem from "./schemas/blocks/feature-cards/feature-card-item";
 import featureCards from "./schemas/blocks/feature-cards/feature-cards";
 import legal from "./schemas/blocks/legal";
+import imageBlock from "./schemas/blocks/image-block";
 
 export const schemaTypes = [
   // documents
@@ -97,4 +98,5 @@ export const schemaTypes = [
   featureCardItem,
   featureCards,
   legal,
+  imageBlock,
 ];
