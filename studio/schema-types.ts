@@ -39,7 +39,6 @@ import pageCarousel from "./schemas/blocks/page-carousel";
 import timelineRow from "./schemas/blocks/timeline/timeline-row";
 import timelinesOne from "./schemas/blocks/timeline/timelines-1";
 import cta1 from "./schemas/blocks/cta/cta-1";
-import contactCta from "./schemas/blocks/contact-cta";
 import logoCloud1 from "./schemas/blocks/logo-cloud/logo-cloud-1";
 import faqs from "./schemas/blocks/faqs";
 import newsletter from "./schemas/blocks/forms/newsletter";
@@ -90,7 +89,6 @@ export const schemaTypes = [
   timelineRow,
   timelinesOne,
   cta1,
-  contactCta,
   logoCloud1,
   faqs,
   newsletter,

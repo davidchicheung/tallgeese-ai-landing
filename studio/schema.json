@@ -759,82 +759,6 @@
     }
   },
   {
-    "name": "contact-cta",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "contact-cta"
-          }
-        },
-        "padding": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "section-padding"
-          },
-          "optional": true
-        },
-        "colorVariant": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "color-variant"
-          },
-          "optional": true
-        },
-        "tagLine": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "title": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "block-content"
-          },
-          "optional": true
-        },
-        "links": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "array",
-            "of": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  }
-                }
-              },
-              "rest": {
-                "type": "inline",
-                "name": "link"
-              }
-            }
-          },
-          "optional": true
-        }
-      }
-    }
-  },
-  {
     "name": "cta-1",
     "type": "type",
     "value": {
@@ -4233,21 +4157,6 @@
                 "rest": {
                   "type": "inline",
                   "name": "cta-1"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "contact-cta"
                 }
               },
               {

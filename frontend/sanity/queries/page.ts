@@ -12,7 +12,6 @@ import { carousel2Query } from "./carousel/carousel-2";
 import { pageCarouselQuery } from "./page-carousel";
 import { timelineQuery } from "./timeline";
 import { cta1Query } from "./cta/cta-1";
-import { contactCtaQuery } from "./contact-cta";
 import { logoCloud1Query } from "./logo-cloud/logo-cloud-1";
 import { faqsQuery } from "./faqs";
 import { formNewsletterQuery } from "./forms/newsletter";
@@ -38,7 +37,6 @@ export const PAGE_QUERY = groq`
       ${pageCarouselQuery},
       ${timelineQuery},
       ${cta1Query},
-      ${contactCtaQuery},
       ${logoCloud1Query},
       ${faqsQuery},
       ${formNewsletterQuery},

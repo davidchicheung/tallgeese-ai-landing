@@ -64,7 +64,6 @@ export default defineType({
         { type: "page-carousel" },
         { type: "timeline-row" },
         { type: "cta-1" },
-        { type: "contact-cta" },
         { type: "logo-cloud-1" },
         { type: "faqs" },
         { type: "form-newsletter" },
@@ -119,7 +118,7 @@ export default defineType({
             {
               name: "cta",
               title: "CTA",
-              of: ["cta-1", "contact-cta"],
+              of: ["cta-1"],
             },
             {
               name: "faqs",
