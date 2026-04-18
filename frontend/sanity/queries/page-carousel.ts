@@ -13,5 +13,6 @@ export const pageCarouselQuery = groq`
     size,
     indicators,
     imageHoverZoom,
+    cardStyle,
   }
 `;

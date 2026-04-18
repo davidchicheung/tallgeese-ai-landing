@@ -94,9 +94,17 @@ export default function MobileNav({
                                       ? "noopener noreferrer"
                                       : undefined
                                   }
-                                  className="inline-block text-muted-foreground hover:text-foreground transition-colors py-1"
+                                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors py-1"
                                 >
-                                  {child.title}
+                                  {child.icon?.svg && (
+                                    <span
+                                      className="[&>svg]:w-4 [&>svg]:h-4 shrink-0"
+                                      dangerouslySetInnerHTML={{
+                                        __html: child.icon.svg,
+                                      }}
+                                    />
+                                  )}
+                                  <span>{child.title}</span>
                                 </Link>
                               </li>
                             ))}
@@ -110,6 +118,7 @@ export default function MobileNav({
                 // itemType === "link"
                 const link = "link" in navItem ? navItem.link : null;
                 if (!link) return null;
+                const icon = "icon" in navItem ? navItem.icon : null;
 
                 return (
                   <div key={navItem._key} className="text-center">
@@ -122,10 +131,17 @@ export default function MobileNav({
                         buttonVariants({
                           variant: link.buttonVariant || "default",
                         }),
+                        "inline-flex items-center gap-2",
                         link.buttonVariant === "ghost" &&
                           "hover:text-decoration-none hover:opacity-50 text-lg p-0 h-auto hover:bg-transparent",
                       )}
                     >
+                      {icon?.svg && (
+                        <span
+                          className="[&>svg]:w-4 [&>svg]:h-4 shrink-0"
+                          dangerouslySetInnerHTML={{ __html: icon.svg }}
+                        />
+                      )}
                       {link.title}
                     </Link>
                   </div>

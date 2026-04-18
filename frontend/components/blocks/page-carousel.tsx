@@ -48,6 +48,7 @@ export default async function PageCarousel({
   size = "three",
   indicators = "none",
   imageHoverZoom = "off",
+  cardStyle = "default",
   currentSlug,
 }: PageCarouselProps) {
   if (!parent) return null;
@@ -61,6 +62,7 @@ export default async function PageCarousel({
 
   const resolvedSize = (size ?? "three") as CarouselSize;
   const isPrimary = colorVariant === "primary";
+  const isOverlay = cardStyle === "image-overlay";
 
   return (
     <SectionContainer color={colorVariant} padding={padding}>
@@ -81,6 +83,61 @@ export default async function PageCarousel({
               ? `/${page.parent}/${page.slug}`
               : `/${page.slug}`;
             const image = page.meta?.image;
+
+            if (isOverlay) {
+              return (
+                <CarouselItem
+                  key={page._id}
+                  className={CAROUSEL_SIZES[resolvedSize]}
+                >
+                  <Link
+                    href={href}
+                    className={cn(
+                      "group relative block w-full overflow-hidden rounded-3xl bg-muted ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      IMAGE_SIZES[resolvedSize],
+                    )}
+                  >
+                    {image && image.asset?._id && (
+                      <Image
+                        className={cn(
+                          "object-cover",
+                          imageHoverZoom === "on"
+                            ? "transition-transform duration-300 group-hover:scale-105"
+                            : undefined,
+                        )}
+                        src={urlFor(image).url()}
+                        alt={page.title || ""}
+                        fill
+                        placeholder={
+                          image.asset?.metadata?.lqip ? "blur" : undefined
+                        }
+                        blurDataURL={image.asset?.metadata?.lqip || ""}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        quality={100}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                      {page.title && (
+                        <h3 className="text-2xl font-bold">{page.title}</h3>
+                      )}
+                      {page.meta?.description && (
+                        <p className="mt-2 text-white/80">
+                          {page.meta.description}
+                        </p>
+                      )}
+                      {linkLabel && (
+                        <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium">
+                          {linkLabel}
+                          <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                </CarouselItem>
+              );
+            }
+
             return (
               <CarouselItem
                 key={page._id}

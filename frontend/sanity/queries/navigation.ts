@@ -10,6 +10,7 @@ export const NAVIGATION_QUERY = groq`
       _key,
       itemType,
       itemType == "link" => {
+        icon,
         link{
           ${linkQuery}
         }

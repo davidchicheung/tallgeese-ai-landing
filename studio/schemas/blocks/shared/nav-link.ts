@@ -13,6 +13,15 @@ export default defineType({
       validation: (rule) => rule.required().error("A title is required"),
     }),
     defineField({
+      name: "icon",
+      title: "Icon",
+      type: "iconPicker",
+      description: "Optional icon shown before the link text",
+      options: {
+        storeSvg: true,
+      },
+    }),
+    defineField({
       name: "description",
       type: "string",
       title: "Description",

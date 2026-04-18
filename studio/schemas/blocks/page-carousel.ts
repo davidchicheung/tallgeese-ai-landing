@@ -94,6 +94,21 @@ export default defineType({
       },
       initialValue: "off",
     }),
+    defineField({
+      name: "cardStyle",
+      type: "string",
+      title: "Card Style",
+      description:
+        "Default: image on top, text below. Image Overlay: image fills the card with text over a gradient at the bottom.",
+      options: {
+        list: [
+          { title: "Default", value: "default" },
+          { title: "Image Overlay", value: "image-overlay" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "default",
+    }),
   ],
   preview: {
     select: {

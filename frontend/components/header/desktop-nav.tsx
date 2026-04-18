@@ -57,8 +57,16 @@ export default function DesktopNav({
                             }
                             className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">
-                              {child.title}
+                            <div className="flex items-center gap-2 text-sm font-medium leading-none">
+                              {child.icon?.svg && (
+                                <span
+                                  className="[&>svg]:w-4 [&>svg]:h-4 shrink-0"
+                                  dangerouslySetInnerHTML={{
+                                    __html: child.icon.svg,
+                                  }}
+                                />
+                              )}
+                              <span>{child.title}</span>
                             </div>
                             {child.description && (
                               <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">
@@ -78,6 +86,7 @@ export default function DesktopNav({
           // itemType === "link"
           const link = "link" in navItem ? navItem.link : null;
           if (!link) return null;
+          const icon = "icon" in navItem ? navItem.icon : null;
 
           return (
             <NavigationMenuItem key={navItem._key}>
@@ -90,10 +99,17 @@ export default function DesktopNav({
                     buttonVariants({
                       variant: link.buttonVariant || "default",
                     }),
+                    "inline-flex items-center gap-2",
                     link.buttonVariant === "ghost" &&
                       "transition-colors hover:text-foreground/80 text-foreground/60 text-sm px-4 py-2 h-auto hover:bg-accent rounded-md",
                   )}
                 >
+                  {icon?.svg && (
+                    <span
+                      className="[&>svg]:w-4 [&>svg]:h-4 shrink-0"
+                      dangerouslySetInnerHTML={{ __html: icon.svg }}
+                    />
+                  )}
                   {link.title}
                 </Link>
               </NavigationMenuLink>

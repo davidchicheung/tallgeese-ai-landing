@@ -21,6 +21,16 @@ export default defineType({
       initialValue: "link",
     }),
     defineField({
+      name: "icon",
+      title: "Icon",
+      type: "iconPicker",
+      description: "Optional icon shown before the link text",
+      options: {
+        storeSvg: true,
+      },
+      hidden: ({ parent }) => parent?.itemType !== "link",
+    }),
+    defineField({
       name: "link",
       title: "Link",
       type: "link",
