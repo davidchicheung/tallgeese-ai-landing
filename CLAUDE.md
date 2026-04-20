@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Tallgeese AI landing page — a pnpm monorepo with two workspaces:
+TallgeeseAI landing page — a pnpm monorepo with two workspaces:
 - **`frontend/`** — Next.js 16 app (React 19, Tailwind CSS v4, TypeScript)
 - **`studio/`** — Sanity Studio v5 for content management
 

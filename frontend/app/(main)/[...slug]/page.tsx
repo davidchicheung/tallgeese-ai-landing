@@ -1,4 +1,5 @@
 import Blocks from "@/components/blocks";
+import HeroSceneLoader from "@/components/3d/hero-scene-loader";
 import {
   fetchSanityPageBySlug,
   fetchSanityPagesStaticParams,
@@ -47,5 +48,12 @@ export default async function Page(props: {
   const page = await fetchSanityPageBySlug(parsed);
   if (!page) notFound();
 
-  return <Blocks blocks={page?.blocks ?? []} currentSlug={parsed.slug} />;
+  const showHeroScene = parsed.parent === "" && parsed.slug === "about";
+
+  return (
+    <>
+      {showHeroScene && <HeroSceneLoader />}
+      <Blocks blocks={page?.blocks ?? []} currentSlug={parsed.slug} />
+    </>
+  );
 }

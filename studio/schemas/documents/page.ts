@@ -61,6 +61,7 @@ export default defineType({
         { type: "section-header" },
         { type: "company-hero" },
         { type: "company-info" },
+        { type: "tallgeese-info" },
         { type: "split-row" },
         { type: "grid-row" },
         { type: "carousel-1" },
@@ -88,7 +89,7 @@ export default defineType({
             {
               name: "company",
               title: "Company",
-              of: ["company-hero", "company-info"],
+              of: ["company-hero", "company-info", "tallgeese-info"],
             },
             {
               name: "logo-cloud",

@@ -22,6 +22,7 @@ import hero2 from "./schemas/blocks/hero/hero-2";
 import sectionHeader from "./schemas/blocks/section-header";
 import companyHero from "./schemas/blocks/company-hero";
 import companyInfo from "./schemas/blocks/company-info";
+import tallgeeseInfo from "./schemas/blocks/tallgeese-info";
 import splitRow from "./schemas/blocks/split/split-row";
 import splitContent from "./schemas/blocks/split/split-content";
 import splitCardsList from "./schemas/blocks/split/split-cards-list";
@@ -73,6 +74,7 @@ export const schemaTypes = [
   sectionHeader,
   companyHero,
   companyInfo,
+  tallgeeseInfo,
   splitRow,
   splitContent,
   splitCardsList,
