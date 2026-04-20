@@ -9,7 +9,6 @@ export const gridPostQuery = groq`
     post->{
       title,
       slug,
-      excerpt,
       image{
         ${imageQuery}
       },

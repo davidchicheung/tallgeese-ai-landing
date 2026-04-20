@@ -75,7 +75,15 @@ const portableTextComponents: PortableTextProps["components"] = {
   },
   block: {
     normal: ({ children }) => (
-      <p style={{ marginBottom: "1rem" }}>{children}</p>
+      <p
+        style={{
+          marginBottom: "1rem",
+          minHeight: "1.5em",
+          whiteSpace: "pre-line",
+        }}
+      >
+        {children}
+      </p>
     ),
     h1: ({ children }) => (
       <h1 style={{ marginBottom: "1rem", marginTop: "1rem" }}>{children}</h1>

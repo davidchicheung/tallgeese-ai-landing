@@ -18,7 +18,7 @@ interface GridPostProps extends Omit<NonNullable<GridPost>, "_type" | "_key"> {
 export default function GridPost({ color, post }: GridPostProps) {
   if (!post) return null;
 
-  const { title, slug, excerpt, image, categories } = post;
+  const { title, slug, image, categories } = post;
 
   return (
     <Link
@@ -65,7 +65,6 @@ export default function GridPost({ color, post }: GridPostProps) {
               ))}
             </div>
           )}
-          {excerpt && <p>{excerpt}</p>}
         </div>
         <div className="mt-3 xl:mt-6 w-10 h-10 border rounded-full flex items-center justify-center group-hover:border-primary">
           <ChevronRight

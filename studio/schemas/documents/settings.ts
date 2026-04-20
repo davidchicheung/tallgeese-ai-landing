@@ -48,6 +48,14 @@ export default defineType({
       type: "block-content",
       description: "The copyright text to display in the footer",
     }),
+    defineField({
+      name: "featuredPost",
+      title: "Featured Blog Post",
+      type: "reference",
+      description: "The post shown as the featured banner on /blog.",
+      to: [{ type: "post" }],
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     select: {

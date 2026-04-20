@@ -36,11 +36,13 @@ const BreadcrumbCustomItem = ({
 
 export default function Breadcrumbs({
   links,
+  className,
 }: {
   links: BreadcrumbLinkType[];
+  className?: string;
 }) {
   return (
-    <Breadcrumb className="mb-3 lg:mb-6">
+    <Breadcrumb className={className ?? "mb-3 lg:mb-6"}>
       <BreadcrumbList>
         {links.map((link, index) => (
           <BreadcrumbCustomItem

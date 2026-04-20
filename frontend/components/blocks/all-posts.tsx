@@ -26,8 +26,9 @@ export default async function AllPosts({
           >
             <PostCard
               title={post?.title ?? ""}
-              excerpt={post?.excerpt ?? ""}
               image={post?.image ?? null}
+              category={post?.categories?.[0]?.title ?? null}
+              publishedAt={post?.publishedAt ?? null}
             />
           </Link>
         ))}

@@ -41,10 +41,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "excerpt",
-      title: "Excerpt",
-      type: "text",
+      name: "publishedAt",
+      title: "Published At",
+      type: "datetime",
       group: "content",
+      initialValue: () => new Date().toISOString(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "author",
