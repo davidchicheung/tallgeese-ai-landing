@@ -209,20 +209,24 @@ export default async function PageCarousel({
             );
           })}
         </CarouselContent>
-        <CarouselPrevious
-          variant="secondary"
-          className="-left-3 md:-left-8 xl:-left-12"
-        />
-        <CarouselNext
-          variant="secondary"
-          className="-right-3 md:-right-8 xl:-right-12"
-        />
-        {indicators && indicators !== "none" && (
-          <div className="w-full flex justify-center">
-            {indicators === "dots" && <CarouselDots />}
-            {indicators === "count" && <CarouselCounter />}
+        <div className="flex items-center mt-12">
+          {indicators && indicators !== "none" && (
+            <div className="flex-1 flex justify-center">
+              {indicators === "dots" && <CarouselDots />}
+              {indicators === "count" && <CarouselCounter />}
+            </div>
+          )}
+          <div className="flex gap-2 ml-auto">
+            <CarouselPrevious
+              variant="secondary"
+              className="static top-auto left-auto right-auto translate-y-0"
+            />
+            <CarouselNext
+              variant="secondary"
+              className="static top-auto left-auto right-auto translate-y-0"
+            />
           </div>
-        )}
+        </div>
       </Carousel>
     </SectionContainer>
   );

@@ -9,6 +9,7 @@ import SplitRow from "@/components/blocks/split/split-row";
 import GridRow from "@/components/blocks/grid/grid-row";
 import Carousel1 from "@/components/blocks/carousel/carousel-1";
 import Carousel2 from "@/components/blocks/carousel/carousel-2";
+import BlogCarousel from "@/components/blocks/carousel/blog-carousel";
 import PageCarousel from "@/components/blocks/page-carousel";
 import TimelineRow from "@/components/blocks/timeline/timeline-row";
 import Cta1 from "@/components/blocks/cta/cta-1";
@@ -36,6 +37,7 @@ const componentMap: {
   "grid-row": GridRow,
   "carousel-1": Carousel1,
   "carousel-2": Carousel2,
+  "blog-carousel": BlogCarousel,
   "page-carousel": PageCarousel,
   "timeline-row": TimelineRow,
   "cta-1": Cta1,

@@ -36,6 +36,7 @@ import gridPost from "./schemas/blocks/grid/grid-post";
 import gridRow from "./schemas/blocks/grid/grid-row";
 import carousel1 from "./schemas/blocks/carousel/carousel-1";
 import carousel2 from "./schemas/blocks/carousel/carousel-2";
+import blogCarousel from "./schemas/blocks/carousel/blog-carousel";
 import pageCarousel from "./schemas/blocks/page-carousel";
 import timelineRow from "./schemas/blocks/timeline/timeline-row";
 import timelinesOne from "./schemas/blocks/timeline/timelines-1";
@@ -88,6 +89,7 @@ export const schemaTypes = [
   gridRow,
   carousel1,
   carousel2,
+  blogCarousel,
   pageCarousel,
   timelineRow,
   timelinesOne,
