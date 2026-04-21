@@ -34,7 +34,7 @@ export default async function Footer() {
                   "children" in navItem ? navItem.children : null;
 
                 const legalLinks =
-                  title === "Resources"
+                  title === "Company"
                     ? [
                         { title: "Privacy Policy", href: "/privacy" },
                         { title: "Terms of Use", href: "/terms" },
