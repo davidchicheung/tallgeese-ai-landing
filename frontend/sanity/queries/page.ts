@@ -20,6 +20,7 @@ import { formNewsletterQuery } from "./forms/newsletter";
 import { formContactQuery } from "./forms/contact";
 import { allPostsQuery } from "./all-posts";
 import { featureCardsQuery } from "./feature-cards";
+import { twoColumnPointsQuery } from "./two-column-points";
 import { legalQuery } from "./legal";
 import { imageBlockQuery } from "./image-block";
 
@@ -48,6 +49,7 @@ export const PAGE_QUERY = groq`
       ${formContactQuery},
       ${allPostsQuery},
       ${featureCardsQuery},
+      ${twoColumnPointsQuery},
       ${legalQuery},
       ${imageBlockQuery},
     },

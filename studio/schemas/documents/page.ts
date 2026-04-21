@@ -76,6 +76,7 @@ export default defineType({
         { type: "form-contact" },
         { type: "all-posts" },
         { type: "feature-cards" },
+        { type: "two-column-points" },
         { type: "legal" },
         { type: "image-block" },
       ],
@@ -146,6 +147,11 @@ export default defineType({
               name: "feature-cards",
               title: "Feature Cards",
               of: ["feature-cards"],
+            },
+            {
+              name: "two-column-points",
+              title: "Two Column Points",
+              of: ["two-column-points"],
             },
             {
               name: "legal",

@@ -19,6 +19,7 @@ import FormNewsletter from "@/components/blocks/forms/newsletter";
 import FormContact from "@/components/blocks/forms/contact";
 import AllPosts from "@/components/blocks/all-posts";
 import FeatureCards from "@/components/blocks/feature-cards";
+import TwoColumnPoints from "@/components/blocks/two-column-points";
 import Legal from "@/components/blocks/legal";
 import ImageBlock from "@/components/blocks/image-block";
 
@@ -47,6 +48,7 @@ const componentMap: {
   "form-contact": FormContact,
   "all-posts": AllPosts,
   "feature-cards": FeatureCards,
+  "two-column-points": TwoColumnPoints,
   legal: Legal,
   "image-block": ImageBlock,
 };

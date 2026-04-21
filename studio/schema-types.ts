@@ -48,6 +48,8 @@ import contactForm from "./schemas/blocks/forms/contact";
 import allPosts from "./schemas/blocks/all-posts";
 import featureCardItem from "./schemas/blocks/feature-cards/feature-card-item";
 import featureCards from "./schemas/blocks/feature-cards/feature-cards";
+import twoColumnPointsItem from "./schemas/blocks/two-column-points/two-column-points-item";
+import twoColumnPoints from "./schemas/blocks/two-column-points/two-column-points";
 import legal from "./schemas/blocks/legal";
 import imageBlock from "./schemas/blocks/image-block";
 
@@ -101,6 +103,8 @@ export const schemaTypes = [
   allPosts,
   featureCardItem,
   featureCards,
+  twoColumnPointsItem,
+  twoColumnPoints,
   legal,
   imageBlock,
 ];
