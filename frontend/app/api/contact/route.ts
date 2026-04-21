@@ -8,8 +8,8 @@ export const POST = async (request: Request) => {
 
   try {
     await resend.emails.send({
-      from: process.env.CONTACT_FROM_EMAIL || "noreply@contact.tallgeese.ai",
-      to: process.env.CONTACT_TO_EMAIL || "david@tallgeese.ai",
+      from: process.env.NEXT_RESEND_FROM_EMAIL || "noreply@tallgeese.ai",
+      to: process.env.NEXT_RESEND_TO_EMAIL || "david@tallgeese.ai",
       subject: `Contact form: ${firstName} ${lastName} (${company})`,
       replyTo: workEmail,
       text: `
