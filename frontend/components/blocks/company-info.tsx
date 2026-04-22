@@ -70,8 +70,8 @@ export default function CompanyInfo({
               </div>
               <p
                 className={cn(
-                  "text-[24px] leading-snug text-white",
-                  isPrimary ? "text-background" : undefined,
+                  "text-[24px] leading-snug",
+                  isPrimary ? "text-background" : "text-foreground",
                 )}
               >
                 {stat.label}
