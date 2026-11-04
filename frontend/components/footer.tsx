@@ -21,8 +21,8 @@ export default async function Footer() {
       <div className="dark:bg-background py-12 xl:py-16 dark:text-gray-300">
         <div className="container">
           {dropdownItems && dropdownItems.length > 0 && (
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-              <div className="col-span-2 md:col-span-1">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+              <div className="col-span-2 md:col-span-3 lg:col-span-1">
                 <Link href="/" aria-label="Home page">
                   <Logo settings={settings} />
                 </Link>
