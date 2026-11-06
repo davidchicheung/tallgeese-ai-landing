@@ -43,6 +43,21 @@ export default defineType({
       ],
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "imageDark",
+      title: "Image for dark mode",
+      description:
+        "Optional: shown instead of the image above when the site is in dark mode, e.g. a logo with light lettering",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative Text",
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
