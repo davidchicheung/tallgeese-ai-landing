@@ -12,5 +12,8 @@ export const imageBlockQuery = groq`
     image{
       ${imageQuery}
     },
+    imageDark{
+      ${imageQuery}
+    },
   }
 `;
