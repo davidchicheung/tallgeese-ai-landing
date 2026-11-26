@@ -4,6 +4,7 @@ import { PAGE_QUERY_RESULT } from "@/sanity.types";
 import GridCard from "./grid-card";
 import PricingCard from "./pricing-card";
 import GridPost from "./grid-post";
+import GridVideo from "./grid-video";
 
 type Block = NonNullable<NonNullable<PAGE_QUERY_RESULT>["blocks"]>[number];
 type GridRow = Extract<Block, { _type: "grid-row" }>;
@@ -17,6 +18,7 @@ const componentMap: {
   "grid-card": GridCard,
   "pricing-card": PricingCard,
   "grid-post": GridPost,
+  "grid-video": GridVideo,
 };
 
 const GRID_COLS_CLASSES: Record<string, string> = {
