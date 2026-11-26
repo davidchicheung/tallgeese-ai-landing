@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 import { metaQuery } from "./shared/meta";
+import { languageQuery } from "./shared/language";
 import { hero1Query } from "./hero/hero-1";
 import { hero2Query } from "./hero/hero-2";
 import { sectionHeaderQuery } from "./section-header";
@@ -25,9 +26,16 @@ import { legalQuery } from "./legal";
 import { imageBlockQuery } from "./image-block";
 
 export const PAGE_QUERY = groq`
-  *[_type == "page" && slug.current == $slug && coalesce(parent, "") == $parent][0]{
+  *[_type == "page" && slug.current == $slug && coalesce(parent, "") == $parent && ${languageQuery} == $language][0]{
     parent,
     "slug": slug.current,
+    "language": ${languageQuery},
+    // The same page in every language it has been published in, itself included.
+    "translations": *[_type == "translation.metadata" && references(^._id)][0].translations[defined(value->slug.current)]{
+      language,
+      "slug": value->slug.current,
+      "parent": value->parent,
+    },
     blocks[]{
       ${hero1Query},
       ${hero2Query},
@@ -57,4 +65,4 @@ export const PAGE_QUERY = groq`
   }
 `;
 
-export const PAGES_SLUGS_QUERY = groq`*[_type == "page" && defined(slug)]{slug, parent}`;
+export const PAGES_SLUGS_QUERY = groq`*[_type == "page" && defined(slug)]{slug, parent, "language": ${languageQuery}}`;

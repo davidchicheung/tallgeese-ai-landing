@@ -1,5 +1,6 @@
 import { type DefaultDocumentNodeResolver } from "sanity/structure";
 import { Iframe } from "sanity-plugin-iframe-pane";
+import { DEFAULT_LANGUAGE } from "./languages";
 
 const SANITY_STUDIO_PREVIEW_URL =
   process.env.SANITY_STUDIO_PREVIEW_URL || "http://localhost:3000";
@@ -26,10 +27,14 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
 
               if (doc._type === "page") {
                 const slug = doc.slug?.current;
+                const prefix =
+                  doc.language && doc.language !== DEFAULT_LANGUAGE
+                    ? `/${doc.language}`
+                    : "";
                 if (slug === "index") {
-                  path = "/";
+                  path = prefix || "/";
                 } else {
-                  path = slug ? `/${slug}` : "/";
+                  path = slug ? `${prefix}/${slug}` : "/";
                 }
               } else if (doc._type === "post") {
                 const slug = doc.slug?.current;

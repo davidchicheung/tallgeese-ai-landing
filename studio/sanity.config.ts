@@ -9,6 +9,8 @@ import { structure } from "./structure";
 import { defaultDocumentNode } from "./defaultDocumentNode";
 import { codeInput } from "@sanity/code-input";
 import { iconPicker } from "sanity-plugin-icon-picker";
+import { documentInternationalization } from "@sanity/document-internationalization";
+import { LANGUAGES, TRANSLATED_TYPES } from "./languages";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set([
@@ -64,5 +66,9 @@ export default defineConfig({
     codeInput(),
     iconPicker(),
     media(),
+    documentInternationalization({
+      supportedLanguages: LANGUAGES,
+      schemaTypes: TRANSLATED_TYPES,
+    }),
   ],
 });

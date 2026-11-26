@@ -20,6 +20,8 @@ import Logo from "@/components/logo";
 import { useState } from "react";
 import { AlignRight } from "lucide-react";
 import { SETTINGS_QUERY_RESULT, NAVIGATION_QUERY_RESULT } from "@/sanity.types";
+import { localePath } from "@/lib/i18n";
+import { dictionary } from "@/lib/dictionary";
 
 type NavItem = NonNullable<
   NonNullable<NAVIGATION_QUERY_RESULT[0]["items"]>[number]
@@ -28,18 +30,21 @@ type NavItem = NonNullable<
 export default function MobileNav({
   navigation,
   settings,
+  lang,
 }: {
   navigation: NAVIGATION_QUERY_RESULT;
   settings: SETTINGS_QUERY_RESULT;
+  lang: string;
 }) {
   const [open, setOpen] = useState(false);
+  const text = dictionary(lang);
   const items = navigation[0]?.items;
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
-          aria-label="Open Menu"
+          aria-label={text.openMenu}
           variant="ghost"
           className="w-10 p-5 focus-visible:ring-1 focus-visible:ring-offset-1"
         >
@@ -52,8 +57,8 @@ export default function MobileNav({
             <Logo settings={settings} />
           </div>
           <div className="sr-only">
-            <SheetTitle>Main Navigation</SheetTitle>
-            <SheetDescription>Navigate to the website pages</SheetDescription>
+            <SheetTitle>{text.mainNavigation}</SheetTitle>
+            <SheetDescription>{text.navigationDescription}</SheetDescription>
           </div>
         </SheetHeader>
         <div className="pt-10 pb-20">
@@ -151,10 +156,10 @@ export default function MobileNav({
             <div className="pt-6 text-center">
               <Link
                 onClick={() => setOpen(false)}
-                href="/contact"
+                href={localePath(lang, "/contact")}
                 className={cn(buttonVariants({ variant: "default" }), "w-full")}
               >
-                Contact Us
+                {text.contactUs}
               </Link>
             </div>
           </div>

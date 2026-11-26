@@ -56,9 +56,11 @@ const componentMap: {
 export default function Blocks({
   blocks,
   currentSlug,
+  lang,
 }: {
   blocks: Block[];
   currentSlug?: string;
+  lang?: string;
 }) {
   return (
     <>
@@ -68,6 +70,7 @@ export default function Blocks({
             <PageCarousel
               {...block}
               currentSlug={currentSlug}
+              lang={lang}
               key={block._key}
             />
           );
@@ -80,7 +83,7 @@ export default function Blocks({
           );
           return <div data-type={block._type} key={block._key} />;
         }
-        return <Component {...(block as any)} key={block._key} />;
+        return <Component {...({ ...block, lang } as any)} key={block._key} />;
       })}
     </>
   );

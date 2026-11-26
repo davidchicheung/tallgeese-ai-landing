@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { DEFAULT_LANGUAGE } from "@/lib/i18n";
 import Link from "next/link";
 import PostCard from "@/components/ui/post-card";
 import FeaturedPost from "@/components/blog/featured-post";
@@ -25,8 +27,12 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogIndex(props: {
+  params: Promise<{ lang: string }>;
   searchParams: Promise<{ category?: string; page?: string }>;
 }) {
+  // The blog is written in the default language only.
+  if ((await props.params).lang !== DEFAULT_LANGUAGE) redirect("/blog");
+
   const { category, page } = await props.searchParams;
   const currentPage = Math.max(1, Number(page) || 1);
 

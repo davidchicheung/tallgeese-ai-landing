@@ -3,6 +3,23 @@ import {
   defineDocuments,
   PresentationPluginOptions,
 } from "sanity/presentation";
+import { DEFAULT_LANGUAGE, LANGUAGES } from "../languages";
+
+// A page is at /<slug> in the default language and /<language>/<slug> in others.
+const pageDocuments = LANGUAGES.flatMap(({ id }) => {
+  const prefix = id === DEFAULT_LANGUAGE ? "" : `/${id}`;
+  const inLanguage = `coalesce(language, "${DEFAULT_LANGUAGE}") == "${id}"`;
+  return [
+    {
+      route: prefix || "/",
+      filter: `_type == 'page' && slug.current == 'index' && ${inLanguage}`,
+    },
+    {
+      route: `${prefix}/:slug`,
+      filter: `_type == 'page' && slug.current == $slug && ${inLanguage}`,
+    },
+  ];
+});
 
 export const resolve: PresentationPluginOptions["resolve"] = {
   locations: {
@@ -24,14 +41,7 @@ export const resolve: PresentationPluginOptions["resolve"] = {
     }),
   },
   mainDocuments: defineDocuments([
-    {
-      route: "/",
-      filter: `_type == 'page' && slug.current == 'index'`,
-    },
-    {
-      route: "/:slug",
-      filter: `_type == 'page' && slug.current == $slug`,
-    },
+    ...pageDocuments,
     {
       route: "/blog/:slug",
       filter: `_type == 'post' && slug.current == $slug`,

@@ -1,12 +1,11 @@
+import { internalHrefQuery } from "./language";
+
 export const linkQuery = `
     _key,
     ...,
     "href": select(
       isExternal => href,
       defined(href) && !defined(internalLink) => href,
-      @.internalLink->slug.current == "index" => "/",
-      @.internalLink->_type == "post" => "/blog/" + @.internalLink->slug.current,
-      defined(@.internalLink->parent) => "/" + @.internalLink->parent + "/" + @.internalLink->slug.current,
-      "/" + @.internalLink->slug.current
+      ${internalHrefQuery}
     )
 `;
