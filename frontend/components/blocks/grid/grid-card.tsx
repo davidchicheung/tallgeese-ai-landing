@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PAGE_QUERY_RESULT, ColorVariant } from "@/sanity.types";
+import { dictionary } from "@/lib/dictionary";
 
 type Block = NonNullable<NonNullable<PAGE_QUERY_RESULT>["blocks"]>[number];
 type GridRow = Extract<Block, { _type: "grid-row" }>;
@@ -12,6 +13,7 @@ type GridCard = Extract<GridColumn, { _type: "grid-card" }>;
 
 interface GridCardProps extends Omit<GridCard, "_type" | "_key"> {
   color?: ColorVariant;
+  lang?: string;
 }
 
 const iconColorStyles: Record<string, string> = {
@@ -34,6 +36,7 @@ export default function GridCard({
   image,
   link,
   hasLink: hasLinkField,
+  lang,
 }: GridCardProps) {
   const hasLink = hasLinkField !== false && link?.href;
 
@@ -89,7 +92,7 @@ export default function GridCard({
           variant={link?.buttonVariant}
           asChild
         >
-          <div>{link?.title ?? "Learn More"}</div>
+          <div>{link?.title ?? dictionary(lang).learnMore}</div>
         </Button>
       )}
     </div>
