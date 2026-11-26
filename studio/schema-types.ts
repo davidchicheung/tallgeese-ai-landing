@@ -33,6 +33,7 @@ import splitInfo from "./schemas/blocks/split/split-info";
 import gridCard from "./schemas/blocks/grid/grid-card";
 import pricingCard from "./schemas/blocks/grid/pricing-card";
 import gridPost from "./schemas/blocks/grid/grid-post";
+import gridVideo from "./schemas/blocks/grid/grid-video";
 import gridRow from "./schemas/blocks/grid/grid-row";
 import carousel1 from "./schemas/blocks/carousel/carousel-1";
 import carousel2 from "./schemas/blocks/carousel/carousel-2";
@@ -88,6 +89,7 @@ export const schemaTypes = [
   gridCard,
   pricingCard,
   gridPost,
+  gridVideo,
   gridRow,
   carousel1,
   carousel2,

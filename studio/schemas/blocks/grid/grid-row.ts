@@ -41,6 +41,7 @@ export default defineType({
       of: [
         { type: "grid-card" },
         { type: "grid-post" },
+        { type: "grid-video" },
         { type: "pricing-card" },
       ],
       options: {

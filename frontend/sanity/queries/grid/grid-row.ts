@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { gridCardQuery } from "../grid/grid-card";
 import { pricingCardQuery } from "../grid/pricing-card";
 import { gridPostQuery } from "../grid/grid-post";
+import { gridVideoQuery } from "../grid/grid-video";
 
 // @sanity-typegen-ignore
 export const gridRowQuery = groq`
@@ -16,6 +17,7 @@ export const gridRowQuery = groq`
       ${gridCardQuery},
       ${pricingCardQuery},
       ${gridPostQuery},
+      ${gridVideoQuery},
     },
   }
 `;
