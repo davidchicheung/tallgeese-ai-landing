@@ -1,4 +1,5 @@
 import { sanityFetch } from "@/sanity/lib/live";
+import { DEFAULT_LANGUAGE } from "@/lib/i18n";
 import { PAGE_QUERY, PAGES_SLUGS_QUERY } from "@/sanity/queries/page";
 import { PAGES_BY_PARENT_QUERY } from "@/sanity/queries/pages-by-parent";
 import { NAVIGATION_QUERY } from "@/sanity/queries/navigation";
@@ -32,13 +33,15 @@ export const BLOG_PAGE_SIZE = 9;
 export const fetchSanityPageBySlug = async ({
   slug,
   parent = "",
+  language = DEFAULT_LANGUAGE,
 }: {
   slug: string;
   parent?: string;
+  language?: string;
 }): Promise<PAGE_QUERY_RESULT> => {
   const { data } = await sanityFetch({
     query: PAGE_QUERY,
-    params: { slug, parent },
+    params: { slug, parent, language },
   });
 
   return data;
@@ -58,13 +61,15 @@ export const fetchSanityPagesStaticParams =
 export const fetchSanityPagesByParent = async ({
   parent,
   excludeSlug = "",
+  language = DEFAULT_LANGUAGE,
 }: {
   parent: string;
   excludeSlug?: string;
+  language?: string;
 }): Promise<PAGES_BY_PARENT_QUERY_RESULT> => {
   const { data } = await sanityFetch({
     query: PAGES_BY_PARENT_QUERY,
-    params: { parent, excludeSlug },
+    params: { parent, excludeSlug, language },
   });
 
   return data;
@@ -102,14 +107,21 @@ export const fetchSanityPostsStaticParams =
     return data;
   };
 
-export const fetchSanityNavigation =
-  async (): Promise<NAVIGATION_QUERY_RESULT> => {
-    const { data } = await sanityFetch({
-      query: NAVIGATION_QUERY,
-    });
+// The menu in a language, or the default language's menu until it has its own.
+export const fetchSanityNavigation = async (
+  language: string = DEFAULT_LANGUAGE,
+): Promise<NAVIGATION_QUERY_RESULT> => {
+  const { data } = await sanityFetch({
+    query: NAVIGATION_QUERY,
+    params: { languages: [language, DEFAULT_LANGUAGE] },
+  });
+  const menus: NAVIGATION_QUERY_RESULT = data;
+  const own = menus.filter((menu) => menu.language === language);
 
-    return data;
-  };
+  return own.length > 0
+    ? own
+    : menus.filter((menu) => menu.language === DEFAULT_LANGUAGE);
+};
 
 export const fetchSanitySettings = async (): Promise<SETTINGS_QUERY_RESULT> => {
   const { data } = await sanityFetch({

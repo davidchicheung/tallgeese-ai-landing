@@ -2,13 +2,14 @@ import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 import { PAGE_QUERY_RESULT } from "@/sanity.types";
+import { dictionary } from "@/lib/dictionary";
 
 type Block = NonNullable<NonNullable<PAGE_QUERY_RESULT>["blocks"]>[number];
 type GridRow = Extract<Block, { _type: "grid-row" }>;
 type GridColumn = NonNullable<NonNullable<GridRow["columns"]>>[number];
 type GridVideo = Extract<GridColumn, { _type: "grid-video" }>;
 
-type GridVideoProps = Omit<GridVideo, "_type" | "_key">;
+type GridVideoProps = Omit<GridVideo, "_type" | "_key"> & { lang?: string };
 
 // The id from a youtu.be/<id>, watch?v=<id>, /shorts/<id> or /embed/<id> link.
 function youtubeId(url: string): string | null {
@@ -24,8 +25,11 @@ export default function GridVideo({
   title,
   excerpt,
   image,
+  lang,
 }: GridVideoProps) {
   if (!url) return null;
+
+  const text = dictionary(lang);
 
   const id = youtubeId(url);
   const thumbnail = image?.asset?._id
@@ -40,7 +44,7 @@ export default function GridVideo({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Watch "${title ?? "the video"}" on YouTube, opens in a new tab`}
+      aria-label={text.watchOnYouTube(title ?? "")}
     >
       <div className="relative grid aspect-video place-items-center overflow-hidden border-b bg-linear-to-br from-muted to-border">
         {thumbnail && (
@@ -82,7 +86,7 @@ export default function GridVideo({
           </p>
         )}
         <span className="mt-auto inline-flex items-center gap-1 pt-5 text-[13px] font-bold">
-          Watch the walkthrough <ArrowUpRight className="size-3.5" />
+          {text.watchWalkthrough} <ArrowUpRight className="size-3.5" />
         </span>
       </div>
     </a>

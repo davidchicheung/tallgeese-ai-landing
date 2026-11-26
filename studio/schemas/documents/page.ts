@@ -1,7 +1,30 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, type SlugIsUniqueValidator } from "sanity";
 import { Files } from "lucide-react";
 import { orderRankField } from "@sanity/orderable-document-list";
 import meta from "../blocks/shared/meta";
+import { DEFAULT_LANGUAGE } from "../../languages";
+
+// A page's address is its language, parent and slug together, so the Chinese
+// /zh-hant/agent may share the slug of the English /agent.
+const isUniqueAddress: SlugIsUniqueValidator = async (slug, context) => {
+  const { document, getClient } = context;
+  const id = document?._id.replace(/^drafts\./, "");
+  return getClient({ apiVersion: "2024-10-01" }).fetch(
+    `!defined(*[
+      _type == "page" && slug.current == $slug
+      && coalesce(parent, "") == $parent
+      && coalesce(language, $defaultLanguage) == $language
+      && !(_id in [$id, "drafts." + $id])
+    ][0]._id)`,
+    {
+      slug,
+      id,
+      parent: document?.parent ?? "",
+      language: document?.language ?? DEFAULT_LANGUAGE,
+      defaultLanguage: DEFAULT_LANGUAGE,
+    },
+  );
+};
 
 export default defineType({
   name: "page",
@@ -48,6 +71,7 @@ export default defineType({
       options: {
         source: "title",
         maxLength: 96,
+        isUnique: isUniqueAddress,
       },
       validation: (Rule) => Rule.required(),
     }),
@@ -176,15 +200,26 @@ export default defineType({
     }),
     meta,
     orderRankField({ type: "page" }),
+    // Written by the Translations menu.
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
   ],
   preview: {
     select: {
       title: "title",
       parent: "parent",
       slug: "slug.current",
+      language: "language",
     },
-    prepare({ title, parent, slug }) {
-      const path = parent ? `/${parent}/${slug ?? ""}` : `/${slug ?? ""}`;
+    prepare({ title, parent, slug, language }) {
+      const prefix =
+        language && language !== DEFAULT_LANGUAGE ? `/${language}` : "";
+      const path =
+        prefix + (parent ? `/${parent}/${slug ?? ""}` : `/${slug ?? ""}`);
       return {
         title: title ?? "(untitled)",
         subtitle: path,

@@ -72,6 +72,17 @@ Types flow from Sanity schemas → `studio/schema.json` (extracted) → `fronten
 
 `settings` and `navigation` are singleton document types — they have restricted actions and fixed document IDs in the studio structure.
 
+### Languages
+
+The site is published in the languages listed in `frontend/lib/locales.json` and `studio/languages.ts` (keep the two in step). The first is the default.
+
+- **Routes**: every page lives under `frontend/app/[lang]/`. The default language is served without its prefix: `next.config.mjs` rewrites `/agent` to `/en/agent` and redirects `/en/agent` back to `/agent`. Other languages keep their prefix (`/zh-hant/agent`).
+- **Content**: `page` and `faq` documents exist once per language, with a `language` field, linked by Sanity's document internationalization plugin (the Translations menu in Studio). A document without the field is in the default language. Queries filter on it with `languageQuery` from `frontend/sanity/queries/shared/language.ts`.
+- **Menu**: the default language's menu is the document `navigation`; another language's is `navigation-<language>`, and a language without one shows the default.
+- **Untranslated pages**: a page that does not exist in the requested language redirects to the default language's page. The language switcher in the header shows only the languages the open page exists in.
+- **Text in code**: strings that are not in Sanity (header, footer, video card) are in `frontend/lib/dictionary.ts`.
+- Blog posts are written in the default language only.
+
 ### Frontend Path Aliases
 
 The frontend uses `@/*` mapped to the `frontend/` root (configured in `tsconfig.json`).

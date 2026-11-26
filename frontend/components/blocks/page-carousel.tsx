@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import { fetchSanityPagesByParent } from "@/sanity/lib/fetch";
 import { PAGE_QUERY_RESULT } from "@/sanity.types";
+import { DEFAULT_LANGUAGE, localePath } from "@/lib/i18n";
 
 const CAROUSEL_SIZES = {
   one: "basis-full",
@@ -37,6 +38,7 @@ type PageCarouselBlock = Extract<
 
 interface PageCarouselProps extends PageCarouselBlock {
   currentSlug?: string;
+  lang?: string;
 }
 
 export default async function PageCarousel({
@@ -50,12 +52,14 @@ export default async function PageCarousel({
   imageHoverZoom = "off",
   cardStyle = "default",
   currentSlug,
+  lang = DEFAULT_LANGUAGE,
 }: PageCarouselProps) {
   if (!parent) return null;
 
   const pages = await fetchSanityPagesByParent({
     parent,
     excludeSlug: currentSlug ?? "",
+    language: lang,
   });
 
   if (!pages || pages.length === 0) return null;
@@ -79,9 +83,10 @@ export default async function PageCarousel({
       <Carousel>
         <CarouselContent>
           {pages.map((page) => {
-            const href = page.parent
-              ? `/${page.parent}/${page.slug}`
-              : `/${page.slug}`;
+            const href = localePath(
+              lang,
+              page.parent ? `/${page.parent}/${page.slug}` : `/${page.slug}`,
+            );
             const image = page.meta?.image;
 
             if (isOverlay) {

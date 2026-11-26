@@ -18,6 +18,13 @@ export default defineType({
       type: "block-content",
     }),
     orderRankField({ type: "faq" }),
+    // Written by the Translations menu.
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
   ],
 
   preview: {

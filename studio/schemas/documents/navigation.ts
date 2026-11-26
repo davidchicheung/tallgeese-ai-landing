@@ -13,10 +13,18 @@ export default defineType({
       type: "array",
       of: [{ type: "nav-item" }],
     }),
+    // There is one navigation document per language; see structure.ts.
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
   ],
   preview: {
-    prepare() {
-      return { title: "Navigation" };
+    select: { language: "language" },
+    prepare({ language }) {
+      return { title: "Navigation", subtitle: language };
     },
   },
 });

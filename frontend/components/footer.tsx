@@ -3,10 +3,17 @@ import Link from "next/link";
 import PortableTextRenderer from "@/components/portable-text-renderer";
 import { ModeToggle } from "@/components/menu-toggle";
 import { fetchSanitySettings, fetchSanityNavigation } from "@/sanity/lib/fetch";
+import { DEFAULT_LANGUAGE, localePath } from "@/lib/i18n";
+import { dictionary } from "@/lib/dictionary";
 
-export default async function Footer() {
+export default async function Footer({
+  lang = DEFAULT_LANGUAGE,
+}: {
+  lang?: string;
+}) {
   const settings = await fetchSanitySettings();
-  const navigation = await fetchSanityNavigation();
+  const navigation = await fetchSanityNavigation(lang);
+  const text = dictionary(lang);
 
   const items = navigation[0]?.items;
 
@@ -23,7 +30,7 @@ export default async function Footer() {
           {dropdownItems && dropdownItems.length > 0 && (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
               <div className="col-span-2 md:col-span-3 lg:col-span-1">
-                <Link href="/" aria-label="Home page">
+                <Link href={localePath(lang, "/")} aria-label={text.homePage}>
                   <Logo settings={settings} />
                 </Link>
               </div>
@@ -34,11 +41,11 @@ export default async function Footer() {
                   "children" in navItem ? navItem.children : null;
 
                 const legalLinks =
-                  title === "Company"
+                  title === text.legalColumn
                     ? [
-                        { title: "Privacy Policy", href: "/privacy" },
-                        { title: "Terms of Use", href: "/terms" },
-                        { title: "License Agreement", href: "/license" },
+                        { title: text.privacy, href: localePath(lang, "/privacy") },
+                        { title: text.terms, href: localePath(lang, "/terms") },
+                        { title: text.license, href: localePath(lang, "/license") },
                       ]
                     : [];
 

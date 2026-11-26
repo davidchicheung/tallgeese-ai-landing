@@ -33,7 +33,8 @@ export default function GridRow({
   title,
   gridColumns,
   columns,
-}: GridRow) {
+  lang,
+}: GridRow & { lang?: string }) {
   return (
     <SectionContainer color={colorVariant} padding={padding}>
       {title && (
@@ -64,7 +65,7 @@ export default function GridRow({
             }
             return (
               <Component
-                {...(column as any)}
+                {...({ ...column, lang } as any)}
                 color={colorVariant}
                 key={column._key}
               />

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { notFound } from "next/navigation";
+import { LOCALES, htmlLang, isLanguage } from "@/lib/i18n";
 
 const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
 
@@ -33,13 +35,22 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ lang: locale.id }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
+  if (!isLanguage(lang)) notFound();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={htmlLang(lang)} suppressHydrationWarning>
       <link rel="icon" href="/favicon.ico" />
       <body
         className={cn(
