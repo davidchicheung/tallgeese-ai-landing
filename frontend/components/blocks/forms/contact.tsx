@@ -22,24 +22,33 @@ import { Loader2, Mail } from "lucide-react";
 import { stegaClean } from "next-sanity";
 import { PAGE_QUERY_RESULT } from "@/sanity.types";
 import HeroSceneLoader from "@/components/3d/hero-scene-loader";
+import { dictionary } from "@/lib/dictionary";
 
 type FormContactProps = Extract<
   NonNullable<NonNullable<PAGE_QUERY_RESULT>["blocks"]>[number],
   { _type: "form-contact" }
 >;
 
-const contactFormSchema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  workEmail: z
-    .string()
-    .min(1, { message: "Email is required" })
-    .email({ message: "Please enter a valid email" }),
-  company: z.string().min(1, { message: "Company is required" }),
-  message: z.string().min(1, { message: "Please tell us about your goals" }).max(1000, { message: "Message must be 1000 characters or less" }),
-});
+// The form's rules, with their messages in the page's language.
+function contactFormSchema(lang?: string) {
+  const text = dictionary(lang).form;
 
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+  return z.object({
+    firstName: z.string().min(1, { message: text.firstNameRequired }),
+    lastName: z.string().min(1, { message: text.lastNameRequired }),
+    workEmail: z
+      .string()
+      .min(1, { message: text.emailRequired })
+      .email({ message: text.emailInvalid }),
+    company: z.string().min(1, { message: text.companyRequired }),
+    message: z
+      .string()
+      .min(1, { message: text.messageRequired })
+      .max(1000, { message: text.messageTooLong }),
+  });
+}
+
+type ContactFormValues = z.infer<ReturnType<typeof contactFormSchema>>;
 
 export default function FormContact({
   padding,
@@ -54,9 +63,10 @@ export default function FormContact({
   consentText,
   buttonText,
   successMessage,
-}: FormContactProps) {
+  lang,
+}: FormContactProps & { lang?: string }) {
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(contactFormSchema(lang)),
     defaultValues: {
       firstName: "",
       lastName: "",
