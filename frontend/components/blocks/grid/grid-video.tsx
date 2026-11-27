@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 import { PAGE_QUERY_RESULT } from "@/sanity.types";
 import { dictionary } from "@/lib/dictionary";
+import GridVideoPlayer from "./grid-video-player";
 
 type Block = NonNullable<NonNullable<PAGE_QUERY_RESULT>["blocks"]>[number];
 type GridRow = Extract<Block, { _type: "grid-row" }>;
@@ -39,35 +39,18 @@ export default function GridVideo({
       : null;
 
   return (
-    <a
-      className="group flex w-full flex-col overflow-hidden rounded-3xl border bg-card ring-offset-background transition ease-in-out hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transform-none"
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={text.watchOnYouTube(title ?? "")}
-    >
+    <div className="group flex w-full flex-col overflow-hidden rounded-3xl border bg-card transition ease-in-out hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 motion-reduce:transform-none">
       <div className="relative grid aspect-video place-items-center overflow-hidden border-b bg-linear-to-br from-muted to-border">
-        {thumbnail && (
-          <Image
-            src={thumbnail}
-            alt={image?.alt || ""}
-            placeholder={image?.asset?.metadata?.lqip ? "blur" : undefined}
-            blurDataURL={image?.asset?.metadata?.lqip || ""}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-            quality={100}
+        {id && thumbnail && (
+          <GridVideoPlayer
+            id={id}
+            title={title ?? ""}
+            playLabel={text.playVideo(title ?? "")}
+            thumbnail={thumbnail}
+            thumbnailAlt={image?.alt || ""}
+            lqip={image?.asset?.metadata?.lqip}
           />
         )}
-        <span
-          aria-hidden="true"
-          className="relative grid size-15 place-items-center rounded-full bg-neutral-900/90 text-white shadow-lg shadow-black/20 transition-transform group-hover:scale-110 motion-reduce:transform-none"
-        >
-          <Play className="ml-0.5 size-5 fill-current" />
-        </span>
-        <span className="absolute bottom-3.5 right-3.5 inline-flex items-center gap-1 rounded-md border bg-card px-2 py-1 text-[11px] font-semibold text-foreground/80">
-          YouTube <ArrowUpRight className="size-3" />
-        </span>
       </div>
       <div className="flex flex-1 flex-col p-6">
         {category && (
@@ -85,10 +68,18 @@ export default function GridVideo({
             {excerpt}
           </p>
         )}
-        <span className="mt-auto inline-flex items-center gap-1 pt-5 text-[13px] font-bold">
-          {text.watchWalkthrough} <ArrowUpRight className="size-3.5" />
-        </span>
+        <p className="mt-auto pt-5">
+          <a
+            className="inline-flex items-center gap-1 rounded-sm text-[13px] font-bold ring-offset-background hover:underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={text.watchOnYouTube(title ?? "")}
+          >
+            {text.openOnYouTube} <ArrowUpRight className="size-3.5" />
+          </a>
+        </p>
       </div>
-    </a>
+    </div>
   );
 }

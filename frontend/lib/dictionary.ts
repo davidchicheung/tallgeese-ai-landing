@@ -13,7 +13,8 @@ const en = {
   privacy: "Privacy Policy",
   terms: "Terms of Use",
   license: "License Agreement",
-  watchWalkthrough: "Watch the walkthrough",
+  playVideo: (title: string) => `Play "${title}"`,
+  openOnYouTube: "Watch on YouTube",
   watchOnYouTube: (title: string) =>
     `Watch "${title}" on YouTube, opens in a new tab`,
   learnMore: "Learn More",
@@ -42,7 +43,8 @@ const dictionaries: Record<string, typeof en> = {
     privacy: "隱私權政策",
     terms: "使用條款",
     license: "授權協議",
-    watchWalkthrough: "觀看示範影片",
+    playVideo: (title: string) => `播放「${title}」`,
+    openOnYouTube: "在 YouTube 觀看",
     watchOnYouTube: (title: string) =>
       `在 YouTube 觀看「${title}」，將於新分頁開啟`,
     learnMore: "了解更多",

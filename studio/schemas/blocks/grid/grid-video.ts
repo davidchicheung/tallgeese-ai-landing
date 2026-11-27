@@ -5,7 +5,7 @@ export default defineType({
   name: "grid-video",
   type: "object",
   title: "Video Card",
-  description: "A card that opens a YouTube video in a new tab",
+  description: "A card that plays a YouTube video on the page",
   icon: CirclePlay,
   fields: [
     defineField({
